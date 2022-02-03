@@ -1,0 +1,32 @@
+GET http://localhost:3000/api/practice
+
+###
+
+POST http://localhost:3000/api/practice
+Content-Type: application/json
+
+{
+  "scale": "C#",
+  "bpm": 75,
+  "userId": 1
+}
+
+###
+
+POST http://localhost:3000/api/register
+Content-Type: application/json
+
+{
+  "email": "mark@bach.com",
+  "password": "password"
+}
+
+###
+
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+  "email": "bob@bach.com",
+  "password": "passwod"
+}

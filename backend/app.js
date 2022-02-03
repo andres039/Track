@@ -4,6 +4,7 @@ const morgan = require('morgan');
 require('dotenv').config();
 
 const app = express();
+const product = require('./routes/api.route.js')
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
@@ -12,7 +13,7 @@ app.get('/', async (req, res, next) => {
   res.send({ message: 'Awesome it works 🐻' });
 });
 
-app.use('/api', require('./routes/api.route'));
+app.use('/api', require("./routes/api.route.js"));
 
 app.use((req, res, next) => {
   next(createError.NotFound());
