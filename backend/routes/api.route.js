@@ -21,10 +21,13 @@ const authenticateToken = (req, res, next) => {
 
 router.get("/practice", authenticateToken, async (req, res, next) => {
   try {
+    const user = await prisma.user.findMany({
+      where: { email: req.user.email}
+    })
     const practices = await prisma.practice.findMany({
-      where: { userId: 2}
+      where: { userId: req.user.user.currentUser.id}
     });
-    res.json(req.user);
+    res.json( practices );
   } catch (error) {
     next(error);
   }
@@ -72,11 +75,11 @@ router.post("/login", async (req, res, next) => {
     !currentUser && res.json({ message: "This email is not registered" });
 
     const validPassword = await bcrypt.compare(password, currentUser.password);
-    const user = { id: currentUser.id };
+    const user = { currentUser };
 
     if (validPassword) {
       // Create token
-      const accessToken = jwt.sign( {user: currentUser}, process.env.TOKEN_KEY);
+      const accessToken = jwt.sign( { user }, process.env.TOKEN_KEY);
       res.json({ accessToken: accessToken });
     } else {
       res.status(401).json({ message: "Invalid password" });
