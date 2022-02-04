@@ -4,7 +4,6 @@ const morgan = require('morgan');
 require('dotenv').config();
 
 const app = express();
-const product = require('./routes/api.route.js')
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));

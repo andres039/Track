@@ -1,4 +1,5 @@
 GET http://localhost:3000/api/practice
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJvYkBiYWNoLmNvbSIsImlhdCI6MTY0Mzk0MjMwMH0.5kdJWCGZc4I2uLh49ODtCvBOmL7Q5DtyWrLPrVxuc7Y
 
 ###
 
@@ -28,5 +29,5 @@ Content-Type: application/json
 
 {
   "email": "bob@bach.com",
-  "password": "passwod"
+  "password": "password"
 }
