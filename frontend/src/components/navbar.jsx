@@ -5,7 +5,7 @@ export default function Navbar() {
   
   return <nav className="navbar is-link" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
-   <h1 className="navbar-item is-size-3">🎹   Welcome to TRACK </h1>
+   <h1 className="navbar-item is-size-3">🎹   Welcome to TRACK. </h1>
   </div>
 
     <div className="navbar-end">
