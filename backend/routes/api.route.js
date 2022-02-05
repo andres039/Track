@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 //const { user } = require("pg/lib/defaults");
 const prisma = new PrismaClient();
 
-//gets all the practices -- needs to target to current user.
+//gets all the practices 
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
