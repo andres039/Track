@@ -12,7 +12,7 @@ export default function Login() {
       mode: "cors",
       method: 'POST',
       body: JSON.stringify(user)
-    }).then(()=> console.log(user))
+    }).then(()=> console.log("this is the res:", req))
   }
   return <div>
    
