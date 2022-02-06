@@ -1,7 +1,8 @@
 import React from 'react';
 import Button from './button';
   
-export default function Navbar() {
+export default function Navbar(props) {
+  const {isLoggedIn, setIsLoggedIn} = props
   
   return <nav className="navbar is-link" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
@@ -11,7 +12,7 @@ export default function Navbar() {
     <div className="navbar-end">
       <div className="navbar-item">
         <div className="buttons">
-          <Button className="button is-primary">
+          <Button className="button is-primary" onClick={() => setIsLoggedIn(false)}>
             <strong className="is-size-4">Sign out</strong>
           </Button>
         </div>

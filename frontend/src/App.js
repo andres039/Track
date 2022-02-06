@@ -11,17 +11,17 @@ import Practice from './components/practice';
 import Form from './components/registration';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   return (
     <div className="App">
       
      {/* <Calendars/> */}
      {!isLoggedIn && <>
-       <Login />
+       <Login setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
        <Form />
        </>
      }
-      { isLoggedIn && <Navbar> </Navbar> }
+      { isLoggedIn && <Navbar setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}> </Navbar> }
      {isLoggedIn && <Practice />}
     </div>
   );
