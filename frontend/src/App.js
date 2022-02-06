@@ -12,17 +12,18 @@ import Form from './components/registration';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userId, setUserId] = useState()
   return (
     <div className="App">
       
      {/* <Calendars/> */}
      {!isLoggedIn && <>
-       <Login setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
+       <Login setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} userId={userId} setUserId={setUserId}/>
        <Form setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
        </>
      }
       { isLoggedIn && <Navbar setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}> </Navbar> }
-     {isLoggedIn && <Practice />}
+     {isLoggedIn && <Practice userId={userId}/>}
     </div>
   );
 }

@@ -81,7 +81,7 @@ router.post("/login", async (req, res, next) => {
     if (validPassword) {
       // Create token
       const accessToken = jwt.sign({ user }, process.env.TOKEN_KEY);
-      res.json({ accessToken: accessToken });
+      res.json({ accessToken: accessToken, userId: user.currentUser.id });
     } else {
       res.status(401).json({ message: "Invalid password" });
     }
