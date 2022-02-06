@@ -22,12 +22,15 @@ const authenticateToken = (req, res, next) => {
 router.get("/practice/:id", async (req, res, next) => {
   try {
      console.log('this is req:', req.params.id);
+     console.log('hi')
     // const user = await prisma.user.findMany({
     //   where: { email: req.user.email },
     // });
+    const userId = req.params.id * 1
     const practices = await prisma.practice.findMany({
-      where: { userId: req.params.id },
+      where: { userId: userId },
     });
+    console.log('practices:', practices);
     res.json(practices);
   } catch (error) {
     next(error);

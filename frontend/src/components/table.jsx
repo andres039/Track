@@ -9,6 +9,6 @@ export default function Table(props) {
     Authorization: `Bearer ${token}`
   })
     .then((result) => result.json())
-    .then((data) => console.log(data));
+    .then((data) => console.log('this is data:', data));
   return <></>;
 }
