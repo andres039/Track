@@ -19,13 +19,14 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-router.get("/practice", authenticateToken, async (req, res, next) => {
+router.get("/practice/:id", async (req, res, next) => {
   try {
-    const user = await prisma.user.findMany({
-      where: { email: req.user.email },
-    });
+     console.log('this is req:', req.params.id);
+    // const user = await prisma.user.findMany({
+    //   where: { email: req.user.email },
+    // });
     const practices = await prisma.practice.findMany({
-      where: { userId: req.user.user.currentUser.id },
+      where: { userId: req.params.id },
     });
     res.json(practices);
   } catch (error) {

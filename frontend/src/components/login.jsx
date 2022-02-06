@@ -5,6 +5,7 @@ export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const {isLoggedIn, setIsLoggedIn, setUserId} = props;
+  const {token, setToken} = props
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = { email, password };
@@ -20,6 +21,7 @@ export default function Login(props) {
         console.log('data', data);
         data.accessToken && setIsLoggedIn(true);
         setUserId(data.userId)
+        setToken(data.accessToken)
       });
   };
   return (
