@@ -18,7 +18,7 @@ function App() {
      {/* <Calendars/> */}
      {!isLoggedIn && <>
        <Login setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
-       <Form />
+       <Form setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
        </>
      }
       { isLoggedIn && <Navbar setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}> </Navbar> }

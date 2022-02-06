@@ -14,13 +14,10 @@ export default function Login(props) {
       body: JSON.stringify(user),
     })
       .then((response) => {
-        console.log(response);
-        // response && setIsLoggedIn(true);
         return response.json();
       })
       .then((data) => {
         data.accessToken && setIsLoggedIn(true);
-        console.log("Success:", data);
       });
   };
   return (
