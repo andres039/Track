@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 //const { user } = require("pg/lib/defaults");
 const prisma = new PrismaClient();
 
-//gets all the practices 
+
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
@@ -21,16 +21,13 @@ const authenticateToken = (req, res, next) => {
 
 router.get("/practice/:id", async (req, res, next) => {
   try {
-     console.log('this is req:', req.params.id);
-     console.log('hi')
     // const user = await prisma.user.findMany({
     //   where: { email: req.user.email },
     // });
-    const userId = req.params.id * 1
+    const userId = +req.params.id
     const practices = await prisma.practice.findMany({
       where: { userId: userId },
     });
-    console.log('practices:', practices);
     res.json(practices);
   } catch (error) {
     next(error);
