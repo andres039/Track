@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-export default function Practice() {
+export default function Practice(props) {
   const [scale, setScale] = useState("");
   const [bpm, setBpm] = useState(0);
+  const {userId} = props
   const handleSubmit = (e) => {
     e.preventDefault()
-    const practice = {scale, bpm, userId: 2}
+    const practice = {scale, bpm, userId}
     fetch('http://localhost:3000/api/practice', {
       mode: "cors",
       method: 'POST',

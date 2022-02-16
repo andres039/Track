@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 //const { user } = require("pg/lib/defaults");
 const prisma = new PrismaClient();
 
-//gets all the practices 
+
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
@@ -19,13 +19,14 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-router.get("/practice", authenticateToken, async (req, res, next) => {
+router.get("/practice/:id", async (req, res, next) => {
   try {
-    const user = await prisma.user.findMany({
-      where: { email: req.user.email },
-    });
+    // const user = await prisma.user.findMany({
+    //   where: { email: req.user.email },
+    // });
+    const userId = +req.params.id
     const practices = await prisma.practice.findMany({
-      where: { userId: req.user.user.currentUser.id },
+      where: { userId: userId },
     });
     res.json(practices);
   } catch (error) {
@@ -82,7 +83,7 @@ router.post("/login", async (req, res, next) => {
     if (validPassword) {
       // Create token
       const accessToken = jwt.sign({ user }, process.env.TOKEN_KEY);
-      res.json({ accessToken: accessToken });
+      res.json({ accessToken: accessToken, userId: user.currentUser.id });
     } else {
       res.status(401).json({ message: "Invalid password" });
     }

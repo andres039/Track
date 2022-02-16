@@ -4,7 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {isLoggedIn, setIsLoggedIn} = props;
+  const {isLoggedIn, setIsLoggedIn, setUserId} = props;
+  const {token, setToken} = props
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = { email, password };
@@ -14,13 +15,13 @@ export default function Login(props) {
       body: JSON.stringify(user),
     })
       .then((response) => {
-        console.log(response);
-        // response && setIsLoggedIn(true);
         return response.json();
       })
       .then((data) => {
+        console.log('data', data);
         data.accessToken && setIsLoggedIn(true);
-        console.log("Success:", data);
+        setUserId(data.userId)
+        setToken(data.accessToken)
       });
   };
   return (
