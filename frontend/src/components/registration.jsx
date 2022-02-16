@@ -34,6 +34,22 @@ export default function Form() {
     if (name === '' || email === '' || password === '') {
       setError(true);
     } else {
+      const options = {
+        method: "POST",
+        body: JSON.stringify({email, password}),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      
+      fetch("/register", options)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
       setSubmitted(true);
       setError(false);
     }

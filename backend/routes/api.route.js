@@ -67,12 +67,13 @@ router.post("/login", async (req, res, next) => {
   try {
     console.log("isvalid:", req.body);
     const { email, password } = req.body;
+    console.log('email:', email)
     const currentUser = await prisma.user.findUnique({
       where: {
         email: email,
       },
     });
-
+    console.log('the user:', currentUser)
     !currentUser && res.json({ message: "This email is not registered" });
 
     const validPassword = await bcrypt.compare(password, currentUser.password);
