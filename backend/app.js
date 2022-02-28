@@ -5,7 +5,7 @@ require('dotenv').config();
 const cors = require("cors")
 
 const app = express();
-app.use(cors({origin: 'http://localhost:3001'}))
+app.use(cors({origin: '*'}))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));

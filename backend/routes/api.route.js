@@ -25,10 +25,12 @@ router.get("/practice/:id", async (req, res, next) => {
     //   where: { email: req.user.email },
     // });
     const userId = +req.params.id
+    console.log('params:', req.params)
+    console.log('userId:', userId)
     const practices = await prisma.practice.findMany({
       where: { userId: userId },
     });
-    res.json(practices);
+    res.status(200).json(practices);
   } catch (error) {
     next(error);
   }
@@ -39,7 +41,7 @@ router.post("/practice", async (req, res, next) => {
     const practice = await prisma.practice.create({
       data: req.body,
     });
-    res.json(practice);
+    res.status(200).json(practice);
   } catch (error) {
     next(error);
   }
@@ -58,7 +60,7 @@ router.post("/register", async (req, res, next) => {
         password: hashedPassword,
       },
     });
-    res.json(user);
+    res.status(200).json(user);
   } catch (error) {
     next(error);
   }
@@ -74,7 +76,7 @@ router.post("/login", async (req, res, next) => {
       },
     });
 
-    !currentUser && res.json({ message: "This email is not registered" });
+    !currentUser && res.status(400).json({ message: "This email is not registered" });
 
     const validPassword = await bcrypt.compare(password, currentUser.password);
     const user = { currentUser };
