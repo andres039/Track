@@ -1,38 +1,35 @@
 import React, { useState, useEffect } from "react";
+import getPractices from "../helpers/getPractices";
 
 export default function Table({ userId }) {
-
   const [practice, setPractice] = useState([]);
 
-  const url = `http://localhost:8081/api/practice/${userId}`;
   useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        if (!res.ok) {
-          const { url, status, statusText } = res;
-          console.log(`${status} ${statusText} in fetch ${url}`);
-        }
-        console.log("res:", res);
-        return res.json();
-      })
-      .then((data) => {
-        console.log("fetch data:", data);
-        setPractice(data);
-      });
-  }, []);
+    updatePractices()
+  }, [practice]);
 
-  console.log("userId:", userId);
+  const updatePractices = async () => {
+    try {
+    const practices = await getPractices(userId);
+    setPractice(practices);
+    } catch (reason) {
+      console.error(reason)
+    }
+  }
+  
   return (
     <div>
+      <h3>My Scales:</h3>
       <nav class="breadcrumb" aria-label="breadcrumbs">
-       { practice && <ul>
-          {practice.map((practices) => (
-            <li key={practices.id}>
-              <a>{practices.scale}</a>
-            </li>
-          ))}
-        </ul>
-}
+        {practice && (
+          <ul>
+            {practice.map((practices) => (
+              <li key={practices.id}>
+                <a>{practices.scale}</a>
+              </li>
+            ))}
+          </ul>
+        )}
       </nav>
     </div>
   );

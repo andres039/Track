@@ -1,18 +1,18 @@
 import React, { useState } from "react";
+import { createPractice } from "../helpers/createPractice";
 
 export default function Practice(props) {
   const [scale, setScale] = useState("");
   const [bpm, setBpm] = useState(0);
   const {userId} = props
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const practice = {scale, bpm, userId}
-    fetch('http://localhost:3000/api/practice', {
-      mode: "cors",
-      method: 'POST',
-      headers: {"Content-Type": "application/json", "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImN1cnJlbnRVc2VyIjp7ImlkIjoyLCJlbWFpbCI6Im1hcmtAYmFjaC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRTamZscEdYZ2Zzc0pJc3JPSzZOdkF1YnRjNms2dUViVnpwS1JUWmNIdDAybzlLdW1lZXNtLiJ9fSwiaWF0IjoxNjQ0MDAyOTE5fQ.TG0ALqAI5zOp6p_01_8rD_DuuO1_8stbF_ylhqFhDVc"},
-      body: JSON.stringify(practice)
-    }).then(()=> console.log(practice))
+    try {
+    await createPractice(practice)
+    } catch (reason) {
+      console.error('Failed to post new practice:', reason)
+    }
   }
   return (
     <div>
