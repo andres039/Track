@@ -1,5 +1,5 @@
 import "./App.css";
-import "bulma/css/bulma.min.css";
+//import "bulma/css/bulma.min.css";
 import "react-calendar/dist/Calendar.css";
 import Button from "./components/button";
 import Calendars from "./components/calendar";

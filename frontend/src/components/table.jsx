@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import getPractices from "../helpers/getPractices";
 import ScaleInfo from "./scaleInfo";
+import "bulma/css/bulma.min.css";
 
 export default function Table({ userId, updated,setUpdated }) {
   const [practice, setPractice] = useState([]);
@@ -23,7 +24,7 @@ export default function Table({ userId, updated,setUpdated }) {
       console.error(reason);
     }
   };
-  
+
   const handleClick = (e) => {
     setActive("isActive")
     setCurrentScale(e.target.value);

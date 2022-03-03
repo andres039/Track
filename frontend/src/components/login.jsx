@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Login(props) {
   const PORT = process.env.PORT || 8081
