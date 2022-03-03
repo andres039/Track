@@ -23,10 +23,9 @@ export default function Table({ userId, updated,setUpdated }) {
       console.error(reason);
     }
   };
-
+  
   const handleClick = (e) => {
     setActive("isActive")
-    console.log('targe:', e.target.value)
     setCurrentScale(e.target.value);
 
   }
