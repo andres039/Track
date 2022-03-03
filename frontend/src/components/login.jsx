@@ -6,7 +6,10 @@ export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const {isLoggedIn, setIsLoggedIn, setUserId} = props;
-  const {token, setToken} = props
+  const {token, setToken, setLog} = props
+  const registerInstead = () => {
+    setLog(false)
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = { email, password };
@@ -61,7 +64,7 @@ export default function Login(props) {
           <div className="mt-3 d-grid gap-2 col-4 mx-auto">
             <button className="btn btn-primary">Login</button>
 
-            <button className="btn btn-primary mx-3">Register</button>
+            <button className="btn btn-primary mx-3" onClick={registerInstead}>Register</button>
           </div>
         </form>
       </div>

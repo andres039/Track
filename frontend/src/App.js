@@ -14,10 +14,16 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState();
   const [token, setToken] = useState();
+  const [updated, setUpdated] = useState(false);
+  const [log, setLog] = useState(false);
+
   return (
     <div className="App">
       {/* <Calendars/> */}
-      {!isLoggedIn && (
+      {!isLoggedIn && !log && (
+        <Form setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} setLog={setLog}/>
+      )}
+      {!isLoggedIn && log && (
         <>
           <Login
             setIsLoggedIn={setIsLoggedIn}
@@ -26,8 +32,8 @@ function App() {
             setUserId={setUserId}
             token={token}
             setToken={setToken}
+            setLog={setLog}
           />
-          <Form setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
         </>
       )}
       {isLoggedIn && (
@@ -35,8 +41,15 @@ function App() {
           {" "}
         </Navbar>
       )}
-      {isLoggedIn && <Practice userId={userId} />}{" "}
-      {isLoggedIn && <Table token={token} userId={userId}/>}
+      {isLoggedIn && <Practice userId={userId} setUpdated={setUpdated} />}{" "}
+      {isLoggedIn && (
+        <Table
+          token={token}
+          userId={userId}
+          setUpdated={setUpdated}
+          updated={updated}
+        />
+      )}
     </div>
   );
 }

@@ -10,6 +10,7 @@ export default function Practice(props) {
     const practice = {scale, bpm, userId}
     try {
     await createPractice(practice)
+      props.setUpdated(true)
     } catch (reason) {
       console.error('Failed to post new practice:', reason)
     }

@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const ScaleInfo = ({ practice, currentScale }) => {
   // const practice = [{
   //   bpm: 85,
   //   createdAt: '2021-06-24'
   // }]
+  useEffect(() => {
+
+  }, [currentScale])
+  
   console.log(currentScale);
   return (
     <div className="table-container">

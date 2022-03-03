@@ -38,7 +38,7 @@ export default function Form(props) {
       setError(false);
 
       const user = { email, password };
-      fetch("http://localhost:3000/api/register", {
+      fetch("http://localhost:8081/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(user),
@@ -46,6 +46,9 @@ export default function Form(props) {
     }
   };
 
+  const logInInstead = () =>  {
+    props.setLog(true)
+  }
   // Showing success message
   const successMessage = () => {
     return (
@@ -114,6 +117,9 @@ export default function Form(props) {
 
         <button onClick={handleSubmit} className="btn" type="submit">
           Submit
+        </button>
+        <button onClick={logInInstead} className="btn" type="submit">
+          Log in
         </button>
       </form>
     </div>
