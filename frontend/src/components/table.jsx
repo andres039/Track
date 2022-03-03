@@ -5,7 +5,7 @@ import ScaleInfo from "./scaleInfo";
 export default function Table({ userId, updated,setUpdated }) {
   const [practice, setPractice] = useState([]);
   const [active, setActive] = useState();
-  const [currentScale, setCurrentScale] = useState("");
+  const [currentScale, setCurrentScale] = useState("hello");
 
   useEffect(() => {
     
@@ -24,6 +24,12 @@ export default function Table({ userId, updated,setUpdated }) {
     }
   };
 
+  const handleClick = (e) => {
+    setActive("isActive")
+    console.log('targe:', e.target.value)
+    setCurrentScale(e.target.value);
+
+  }
   return (
     <div>
       <h2>My Scales:</h2>
@@ -32,15 +38,13 @@ export default function Table({ userId, updated,setUpdated }) {
           <ul>
             {practice.map((practices) => (
               <li key={practices.id}>
-                <a
-                  onClick={() => {
-                    setActive("isActive");
-                    setCurrentScale(practices.scale);
-                  }}
-                  className={active}
+                <button
+                  onClick={handleClick}
+                  className={'button is-info'}
+                  value={practices.scale}
                 >
                   {practices.scale}
-                </a>
+                </button>
               </li>
             ))}
           </ul>

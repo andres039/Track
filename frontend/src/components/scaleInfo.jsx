@@ -21,12 +21,12 @@ const ScaleInfo = ({ practice, currentScale }) => {
         </thead>
         <tbody>
           {practice.map((practices) => {
-            practices.scale === currentScale && (
+            if (practices.scale === currentScale) { (
               <tr>
                 <td>{practices.createdAt}</td>
                 <td>{practices.bpm}</td>
               </tr>
-            );
+            )}
           })}
         </tbody>
       </table>
