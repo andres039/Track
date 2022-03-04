@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "../App.css"
+//import app from "../app.module.css"
+import registration from './Registration.module.css'
 export default function Form(props) {
   // States for registration
   const [name, setName] = useState("");
@@ -53,7 +54,7 @@ export default function Form(props) {
   const successMessage = () => {
     return (
       <div
-        className="success"
+        className={registration.success, registration.App}
         style={{
           display: submitted ? "" : "none",
         }}
@@ -67,7 +68,7 @@ export default function Form(props) {
   const errorMessage = () => {
     return (
       <div
-        className="error"
+        className={registration.error}
         style={{
           display: error ? "" : "none",
         }}
@@ -78,47 +79,47 @@ export default function Form(props) {
   };
 
   return (
-    <div className="form">
-      <div>
+    <div >
+      <div className={registration.form}>
         <h1>Registration</h1>
       </div>
 
       {/* Calling to the methods */}
-      <div className="messages">
+      <div className={registration.messages}>
         {errorMessage()}
         {successMessage()}
       </div>
 
       <form>
         {/* Labels and inputs for form data */}
-        <label className="label">Name</label>
+        <label className={registration.label}>Name</label>
         <input
           onChange={handleName}
-          className="input"
+          className={registration.input}
           value={name}
           type="text"
         />
 
-        <label className="label">Email</label>
+        <label className={registration.label}>Email</label>
         <input
           onChange={handleEmail}
-          className="input"
+          className={registration.input}
           value={email}
           type="email"
         />
 
-        <label className="label">Password</label>
+        <label className={registration.label}>Password</label>
         <input
           onChange={handlePassword}
-          className="input"
+          className={registration.input}
           value={password}
           type="password"
         />
 
-        <button onClick={handleSubmit} className="btn" type="submit">
+        <button onClick={handleSubmit} className={registration.btn} type="submit">
           Submit
         </button>
-        <button onClick={logInInstead} className="btn" type="submit">
+        <button onClick={logInInstead} className={registration.btn} type="submit">
           Log in
         </button>
       </form>

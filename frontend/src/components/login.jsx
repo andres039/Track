@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 //import "bootstrap/dist/css/bootstrap.min.css";
+import boots from "./Login.module.css";
 
 export default function Login(props) {
-  const PORT = process.env.PORT || 8081
+  const PORT = process.env.PORT || 8081;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {isLoggedIn, setIsLoggedIn, setUserId} = props;
-  const {token, setToken, setLog} = props
+  const { isLoggedIn, setIsLoggedIn, setUserId } = props;
+  const { token, setToken, setLog } = props;
   const registerInstead = () => {
-    setLog(false)
-  }
+    setLog(false);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = { email, password };
@@ -22,49 +23,66 @@ export default function Login(props) {
         return response.json();
       })
       .then((data) => {
-        setUserId(data.userId)
-        console.log('data', data);
+        setUserId(data.userId);
+        console.log("data", data);
         data.accessToken && setIsLoggedIn(true);
-        setToken(data.accessToken)
+        setToken(data.accessToken);
       });
   };
   return (
     <div>
-      <div className="text-center mt-5">
+      <div className={(boots["text-center"], boots["mt-5"])}>
         <form onSubmit={handleSubmit}>
-          <h1 className="mt-5 h3 font-weight-normal">Track</h1>
+          <h1
+            className={(boots["mt-5"], boots.h3, boots["font-weight-normal"])}
+          >
+            Track
+          </h1>
 
-          <label className="sr-only"></label>
+          <label className={boots['sr-only']}></label>
           <input
             type="email"
             id="emailAddress"
-            className="form-control"
+            className={boots['form-control']}
             placeholder="Email Address"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <label className="sr-only"> </label>
+          <label className={boots['sr-only']}> </label>
           <input
             type="password"
             id="password"
-            className="form-control"
+            className={boots['form-control']}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <div className="checkbox">
+          <div className={boots["checkbox"]}>
             <label>
-              <input className="mt-3" type="checkbox" value="remember-me" />{" "}
+              <input className={boots["mt-3"]} type="checkbox" value="remember-me" />{" "}
               Remember me
             </label>
           </div>
-          <div className="mt-3 d-grid gap-2 col-4 mx-auto">
-            <button className="btn btn-primary">Login</button>
+          <div
+            className={
+              (boots["mt-3"],
+              boots["d-grid"],
+              boots["gap-2"],
+              boots["col-4"],
+              boots["mx-auto"])
+            }
+          >
+            <button className={(boots.btn, boots["btn-primary"])}>Login</button>
 
-            <button className="btn btn-primary mx-3" onClick={registerInstead}>Register</button>
+            <button
+              className={(boots.btn, boots["btn-primary"], boots["mx-3"])}
+              onClick={registerInstead}
+            >
+              Register
+            </button>
           </div>
         </form>
       </div>
