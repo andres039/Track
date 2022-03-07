@@ -9,6 +9,7 @@ import Navbar from "./components/navbar";
 import Practice from "./components/practice";
 import Form from "./components/registration";
 import Table from "./components/table";
+import Welcome from "./components/welcome";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Calendars/> */}
+      <Navbar setLog={setLog} log={log} setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}/>
       {!isLoggedIn && !log && (
         <Form setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} setLog={setLog}/>
       )}
@@ -35,11 +36,6 @@ function App() {
             setLog={setLog}
           />
         </>
-      )}
-      {isLoggedIn && (
-        <Navbar setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn}>
-          {" "}
-        </Navbar>
       )}
       {isLoggedIn && <Practice userId={userId} setUpdated={setUpdated} />}{" "}
       {isLoggedIn && (

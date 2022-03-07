@@ -47,14 +47,12 @@ export default function Form(props) {
     }
   };
 
-  const logInInstead = () =>  {
-    props.setLog(true)
-  }
+
   // Showing success message
   const successMessage = () => {
     return (
       <div
-        className={registration.success, registration.App}
+        className={registration.success}
         style={{
           display: submitted ? "" : "none",
         }}
@@ -118,9 +116,6 @@ export default function Form(props) {
 
         <button onClick={handleSubmit} className={registration.btn} type="submit">
           Submit
-        </button>
-        <button onClick={logInInstead} className={registration.btn} type="submit">
-          Log in
         </button>
       </form>
     </div>
