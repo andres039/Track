@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createPractice } from "../helpers/createPractice";
 import { FormLog } from "./FormLog";
-
+import { Card } from "./PracticeStyled";
 export default function Practice(props) {
   const [scale, setScale] = useState("");
   const [bpm, setBpm] = useState(0);
@@ -17,7 +17,7 @@ export default function Practice(props) {
     }
   }
   return (
-    <div>
+    <Card>
       <form className="container mt-6 is-align-content-center is-flex-direction-column" onSubmit={handleSubmit}>
         <h1 className="is-size-3"> Today's practice </h1>
         <div class="field">
@@ -59,6 +59,6 @@ export default function Practice(props) {
           </p>
         </div>
       </form>
-    </div>
+    </Card>
   );
 }

@@ -3,7 +3,7 @@ import getPractices from "../helpers/getPractices";
 import ScaleInfo from "./scaleInfo";
 import "bulma/css/bulma.min.css";
 import { FormLog } from "./FormLog";
-
+import { Card } from "./TableStyle";
 export default function Table({ userId, updated, setUpdated }) {
   const [practice, setPractice] = useState([]);
   const [active, setActive] = useState();
@@ -29,7 +29,7 @@ export default function Table({ userId, updated, setUpdated }) {
     setCurrentScale(e.target.value);
   };
   return (
-    <div>
+    <Card>
         <h2>My Scales:</h2>
         <nav class="breadcrumb" aria-label="breadcrumbs">
           {practice && (
@@ -49,6 +49,6 @@ export default function Table({ userId, updated, setUpdated }) {
           )}
         </nav>
         <ScaleInfo practice={practice} currentScale={currentScale} />
-    </div>
+    </Card>
   );
 }
