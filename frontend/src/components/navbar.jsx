@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./button";
 import styles from "./Navbar.module.css";
+import "bulma/css/bulma.min.css";
 export default function Navbar(props) {
   const { isLoggedIn, setIsLoggedIn, setLog, log } = props;
   const logInInstead = () => {
@@ -12,27 +13,26 @@ export default function Navbar(props) {
   return (
     <nav className={styles.back} role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <h1 className="navbar-item is-size-3 text">🎹 Welcome to TRACK. </h1>
+        <h1 className="navbar-item is-size-1 has-text-primary ">🎹 Welcome to TRACK. </h1>
       </div>
 
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="buttons">
             {!isLoggedIn && !log && (
-              <Button onClick={logInInstead} type="submit">
+              <button onClick={logInInstead} className="button is-primary"type="submit">
                 Log in
-              </Button>
+              </button>
             )}
             {!isLoggedIn && log && (
-              <Button onClick={registerInstead}>Register</Button>
+              <button className="button is-info" onClick={registerInstead}>Register</button>
             )}
             {isLoggedIn && (
-              <Button
-                className="button is-primary"
+              <button className="button is-danger"
                 onClick={() => setIsLoggedIn(false)}
               >
                 <strong className="is-size-5">Sign out</strong>
-              </Button>
+              </button>
             )}
           </div>
         </div>
