@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { FormLog } from "./FormLog";
+import { Container, Form, Label, Title, Input, Button } from "./Loginstyle";
 //import "bootstrap/dist/css/bootstrap.min.css";
-import boots from "./Login.module.css";
+
 
 export default function Login(props) {
   const PORT = process.env.PORT || 8081;
@@ -29,54 +31,46 @@ export default function Login(props) {
   };
   return (
     <div>
-      <div className={(boots["text-center"], boots["mt-5"])}>
-        <form onSubmit={handleSubmit}>
-          <h1
-            className={(boots["mt-5"], boots.h3, boots["font-weight-normal"])}
+      <Container> 
+        <Form onSubmit={handleSubmit}>
+          <Title
+            
           >
             Track
-          </h1>
+          </Title>
 
-          <label className={boots['sr-only']}></label>
-          <input
+          <Label ></Label>
+          <Input
             type="email"
             id="emailAddress"
-            className={boots['form-control']}
             placeholder="Email Address"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
 
-          <label className={boots['sr-only']}> </label>
-          <input
+          <label> </label>
+          <Input
             type="password"
             id="password"
-            className={boots['form-control']}
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <div className={boots["checkbox"]}>
-            <label>
-              <input className={boots["mt-3"]} type="checkbox" value="remember-me" />{" "}
+          <div>
+            <Label>
+              <Input  type="checkbox" value="remember-me" />{" "}
               Remember me
-            </label>
+            </Label>
           </div>
           <div
-            className={
-              (boots["mt-3"],
-              boots["d-grid"],
-              boots["gap-2"],
-              boots["col-4"],
-              boots["mx-auto"])
-            }
+
           >
-            <button className={(boots.btn, boots["btn-primary"])}>Login</button>
+            <Button>Login</Button>
           </div>
-        </form>
-      </div>
+        </Form>
+      </Container>
     </div>
   );
 }

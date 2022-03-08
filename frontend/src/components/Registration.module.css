@@ -2,6 +2,10 @@ body {
   text-align: center;
 }
 
+.form {
+  display: flex;
+  flex-flow: column;
+}
 .App {
   background-color: rgb(255, 253, 253);
   display: inline-block;
@@ -18,6 +22,11 @@ body {
   font-size: larger;
   color: rgb(12, 11, 11);
   padding: 5px;
+}
+
+.title {
+  font-size: 3rem;
+  color: rgb(195, 63, 63);
 }
 
 .input {

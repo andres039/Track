@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createPractice } from "../helpers/createPractice";
+import { FormLog } from "./FormLog";
 
 export default function Practice(props) {
   const [scale, setScale] = useState("");
