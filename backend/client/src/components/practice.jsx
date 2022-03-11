@@ -19,10 +19,10 @@ export default function Practice(props) {
   return (
     <Card>
       <form className="container mt-6 is-align-content-center is-flex-direction-column" onSubmit={handleSubmit}>
-        <h1 className="is-size-3"> Today's practice </h1>
+        <h1 className="title  is-size-3"> Today's practice </h1>
         <div class="field">
           <p class="control has-icons-left has-icons-right">
-            <label>Scale</label>
+            <label className="is-size-4">Scale</label>
             <input
               class="input"
               type="text"
@@ -40,7 +40,7 @@ export default function Practice(props) {
         </div>
         <div class="field">
           <p class="control has-icons-left">
-            <label>BPM</label>
+            <label className="is-size-4">BPM</label>
             <input
               class="input"
               type="text"

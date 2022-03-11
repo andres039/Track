@@ -1,5 +1,5 @@
 //import app from "./app.module.css";
-//import "bulma/css/bulma.min.css";
+import "bulma/css/bulma.min.css";
 
 import React, { useState } from "react";
 import Login from "./components/login";
